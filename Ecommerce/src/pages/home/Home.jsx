@@ -2,9 +2,9 @@ import React from "react";
 import Layout from "../../components/layout/Layout";
 import Crousel from "../../components/crousel/Crousel";
 import Filter from "../../components/filter/Filter";
-import img1 from "../../assets/images/img1.jpg";
-import img2 from "../../assets/images/img2.jpg";
-import img3 from "../../assets/images/img3.jpg";
+import A from "../../assets/images/A.webp";
+import B from "../../assets/images/B.webp";
+import C from "../../assets/images/C.webp";
 import img4 from "../../assets/images/img4.jpg";
 import Testimonial from "../../components/testimonial/Testimonial";
 import { Link } from "react-router-dom";
@@ -12,9 +12,9 @@ import ProductCard from "../../components/productCard/ProductCard";
 
 function Home() {
   const images = [
-    img1,
-    img2,
-    img3,
+    A,
+    B,
+    C,
     img4,
   ];
 

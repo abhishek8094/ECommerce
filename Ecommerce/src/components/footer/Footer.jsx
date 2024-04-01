@@ -149,8 +149,7 @@ function Footer() {
             >
               @ 2023 Capital Shop —
               <a
-                href="https://twitter.com/knyttneve"
-                rel="noopener noreferrer"
+                href=""
                 className="text-gray-600 ml-1"
                 target="_blank"
                 style={{ color: mode === "dark" ? "white" : "" }}

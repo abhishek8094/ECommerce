@@ -20,9 +20,13 @@ function Filter() {
     setFilterPrice("");
   };
 
+  const handlePriceChange = (e) => {
+    setFilterPrice(e.target.value);
+  };
+
   return (
     <div>
-      <div className=" container mx-auto px-4 mt-5 ">
+      <div className="container mx-auto px-4 mt-5">
         <div
           className="p-5 rounded-lg bg-gray-100 drop-shadow-xl border border-gray-200"
           style={{
@@ -78,31 +82,31 @@ function Filter() {
               >
                 {" "}
                 <option value="">All Category</option>
-                {product.map((item, index) => {
-                  return (
-                    <option key={index} value={item.category}>
-                      {item.category}
-                    </option>
-                  );
-                })}
+                {product.map((item, index) => (
+                  <option key={index} value={item.category}>
+                    {item.category}
+                  </option>
+                ))}
               </select>
               <select
                 value={filterPrice}
-                onChange={(e) => setFilterPrice(e.target.value)}
-                className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                onChange={handlePriceChange}
+                className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(64 66 70)" : "",
                   color: mode === "dark" ? "white" : "",
                 }}
               >
                 <option value="">All prices</option>
-                {product.map((item, index) => {
-                  return (
-                    <option key={index} value={item.price}>
-                      {item.price}
+                {product
+                  .map((item) => parseFloat(item.price))
+                  .filter((price, index, self) => self.indexOf(price) === index)
+                  .sort((a, b) => a - b)
+                  .map((price, index) => (
+                    <option key={index} value={price}>
+                      {price}
                     </option>
-                  );
-                })}
+                  ))}
               </select>
             </div>
           </div>

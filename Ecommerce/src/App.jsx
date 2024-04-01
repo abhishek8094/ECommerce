@@ -20,12 +20,14 @@ import UpdateProduct from "./pages/admin/page/UpdateProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Allproducts from "./pages/allproducts/AllProduct";
+import WishList from "./components/wishlist/WishList";
 function App() {
   return (
     <MyState>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allproducts" element={<Allproducts />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/order" element={<Order />} />
         <Route path="/cart" element={<Cart />} />
         <Route

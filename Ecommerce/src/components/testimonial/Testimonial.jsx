@@ -25,7 +25,7 @@ function Testimonial() {
           </h2>
           <div className="flex flex-wrap -m-4">
             <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
-              <div className="h-full text-center">
+              <div className="h-full text-center ">
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
@@ -35,7 +35,7 @@ function Testimonial() {
                   style={{ color: mode === "dark" ? "white" : "" }}
                   className="leading-relaxed"
                 >
-                  Lorem ipsum dolor sit amet.
+                 Lorem ipsum dolor sit, amet consectetur adipisicing.
                 </p>
                 <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
                 <h2

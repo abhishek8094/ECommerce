@@ -12,6 +12,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const context = useContext(myContext);
   const { loading, setLoading } = context;
@@ -20,8 +21,12 @@ function Signup() {
   
   const signup = async () => {
     setLoading(true);
-    if (name === "" || email === "" || password === "") {
+    if (name === "" || email === "" || password === "" || confirmPassword === "") {
       return toast.error("All fields are required");
+    }  
+
+    if(password !== confirmPassword){
+      return toast.error ("Passwords do not match");
     }
 
     try {
@@ -40,6 +45,7 @@ function Signup() {
       setName("");
       setEmail("");
       setPassword("");
+      setConfirmPassword("");
       setLoading(false);
       navigate("/Login")
      
@@ -86,6 +92,16 @@ function Signup() {
             onChange={(e) => setPassword(e.target.value)}
             className=" bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
             placeholder="Password"
+          />
+        </div>
+
+        <div>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className=" bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
+            placeholder="Confirm Password"
           />
         </div>
         <div className=" flex justify-center mb-3">

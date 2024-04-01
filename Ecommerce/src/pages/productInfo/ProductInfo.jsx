@@ -36,8 +36,13 @@ function ProductInfo() {
 
   // add to cart
   const addCart = (products) => {
-    dispatch(addToCart(products));
-    toast.success("add to cart");
+    const isInCart = cartItems.items.some((item) => item.id === products.id);
+    if (isInCart) {
+      toast.success("items alerady in cart");
+    } else {
+      dispatch(addToCart(products));
+      toast.success("Added to cart");
+    }
   };
 
   useEffect(() => {

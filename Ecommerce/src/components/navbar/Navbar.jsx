@@ -21,6 +21,7 @@ function Navbar() {
   };
 
   const cartItems = useSelector((state) => state.cart);
+  const wishlistItems = useSelector((state) => state.wishlist.items);
 
   return (
     <div className="bg-white sticky top-0 z-50">
@@ -67,13 +68,31 @@ function Navbar() {
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <Link
-                    to={"/allproducts"}
-                    className="text-sm font-medium text-gray-900 "
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    All Products
-                  </Link>
+                  <div className="flex flex-col">
+                    <Link
+                      to={"/allproducts"}
+                      className="text-sm font-medium text-gray-900 "
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      All Products
+                    </Link>
+
+                    <div className="flex mt-3">
+                      <Link
+                        to={"/wishlist"}
+                        className="text-sm font-medium text-gray-700"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Wishlist
+                      </Link>
+                      <span
+                        className="ml-2 text-sm font-medium text-gray-700 group-"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        {wishlistItems.length}
+                      </span>
+                    </div>
+                  </div>
 
                   {user ? (
                     <div className="flow-root">
@@ -301,9 +320,24 @@ function Navbar() {
                     />
                   </a>
                 </div>
+                
+                {/* wishlist  */}
+                <Link
+                  to={"/wishlist"}
+                  className="ml-4 font-medium text-gray-700 "
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                >
+                  Wishlist
+                </Link>
+                <span
+                  className=" lg:ml-2 mr-4 text-sm font-medium text-gray-700 group-"
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                >
+                  {wishlistItems.length}
+                </span>
 
                 {/* Toogle Dark Mode  */}
-                <div className="flex lg:ml-6">
+                <div className="flex lg:ml-8">
                   <button className="" onClick={toggleMode}>
                     {mode === "light" ? (
                       <FiSun className="" size={30} />
@@ -341,7 +375,7 @@ function Navbar() {
                       className="ml-2 text-sm font-medium text-gray-700 group-"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      {cartItems.length}
+                      {cartItems.items.length}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>

@@ -1,49 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/cartSlice";
+import { addItem, removeItem } from "../../redux/wishlistSlice";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 function ProductCard() {
   const context = useContext(myContext);
-  const {
-    mode,
-    product,
-    searchkey,
-    setSearchkey,
-    filterType,
-    setFilterType,
-    filterPrice,
-    setFilterPrice,
-  } = context;
+  const { mode, product, searchkey, filterType, filterPrice } = context;
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
+  const wishlistItems = useSelector((state) => state.wishlist);
+  // console.log(wishlistItems.items)
 
-  const [wishlist, setWishlist] = useState([]);
-
-  const addCart = (product) => {
-    dispatch(addToCart(product));
-    toast.success("Added to cart");
-  };
-
-  const removeCartItem = (id) => {
-    dispatch(removeFromCart({ id }));
-    toast.error("Removed from cart");
-  };
-
-  const toggleWishlist = (id) => {
-    if (wishlist.includes(id)) {
-      setWishlist(wishlist.filter((itemId) => itemId !== id));
-      toast.success("Removed from wishlist");
+  const addToWishlist = (item) => {
+    const itemId = item.id;
+    if (selectedItems.includes(itemId)) {
+      dispatch(removeItem(itemId));
+      setSelectedItems(selectedItems.filter((id) => id !== itemId));
+      toast.info("Removed from wishlist");
     } else {
-      setWishlist([...wishlist, id]);
+      dispatch(addItem(item));
+      setSelectedItems([...selectedItems, itemId]);
       toast.success("Added to wishlist");
     }
   };
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    setSelectedItems(wishlistItems.items.map((item) => item.id));
   }, [cartItems]);
 
   return (
@@ -67,26 +53,19 @@ function ProductCard() {
             .slice(0, 8)
             .map((item, index) => {
               const { title, price, imageUrl, id } = item;
-              const isInCart = cartItems.some((cartItem) => cartItem.id === id);
-              const isInWishlist = wishlist.includes(id);
+              const isSelected = selectedItems.includes(id);
 
               return (
-                <div key={index} className="p-4 md:w-1/4  drop-shadow-lg ">
-                  <div
-                    className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out    border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
-                    style={{
-                      backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                      color: mode === "dark" ? "white" : "",
-                    }}
-                  >
+                <div key={index} className="p-4 md:w-1/4 relative">
+                  <div className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out border-gray-200 border-opacity-60 rounded-2xl overflow-hidden">
                     <div
+                      className="flex justify-center cursor-pointer"
                       onClick={() =>
                         (window.location.href = `/productinfo/${id}`)
                       }
-                      className="flex justify-center cursor-pointer"
                     >
                       <img
-                        className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out"
+                        className="rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110 duration-300 ease-in-out"
                         src={imageUrl}
                         alt="blog"
                       />
@@ -110,37 +89,14 @@ function ProductCard() {
                       >
                         ₹{price}
                       </p>
-                      <div className="flex justify-between">
-                        {isInCart ? (
-                          <button
-                            type="button"
-                            onClick={() => removeCartItem(id)}
-                            className="focus:outline-none text-white bg-[#43bf7b] hover:[#9243bf] focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
-                          >
-                            Remove From Cart
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => addCart(item)}
-                            className="focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
-                          >
-                            Add To Cart
-                          </button>
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => toggleWishlist(id)}
-                          className={`focus:outline-none text-white ${
-                            isInWishlist
-                              ? "bg-violet-400 hover:bg-violet-500"
-                              : "bg-gray-400 hover:bg-gray-500"
-                          } focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2 ml-2`}
-                        >
-                          {isInWishlist
-                            ? "Remove from Wishlist"
-                            : "Add to Wishlist"}
-                        </button>
+                      <div className="absolute bottom-12 right-12">
+                        <div onClick={() => addToWishlist(item)}>
+                          {isSelected ? (
+                            <FaHeart className="text-xl text-red-500 cursor-pointer" />
+                          ) : (
+                            <FaRegHeart className="text-xl cursor-pointer" />
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

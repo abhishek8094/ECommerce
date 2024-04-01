@@ -1,5 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Modal({
   name,
@@ -13,12 +15,19 @@ export default function Modal({
   buyNow,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  function closeModal() {
+
+  function closeModal() { 
     setIsOpen(false);
   }
 
   function openModal() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      navigate("/signup");
+      return;
+    }
     setIsOpen(true);
   }
 
