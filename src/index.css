@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active:hover{
+    color: rgb(13, 255, 243);
+}
