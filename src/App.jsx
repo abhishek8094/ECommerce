@@ -21,6 +21,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Allproducts from "./pages/allproducts/AllProduct";
 import WishList from "./components/wishlist/WishList";
+
 function App() {
   return (
     <MyState>

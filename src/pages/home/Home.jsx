@@ -9,6 +9,7 @@ import img4 from "../../assets/images/img4.jpg";
 import Testimonial from "../../components/testimonial/Testimonial";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/productCard/ProductCard";
+import Track from "../../components/track/Track";
 
 function Home() {
   const images = [
@@ -30,6 +31,7 @@ function Home() {
           </button>
         </Link>
       </div>
+      <Track/>
       <Testimonial />
     </Layout>
   );

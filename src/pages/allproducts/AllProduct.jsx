@@ -16,7 +16,7 @@ function Allproducts() {
 
   const addToWishlist = (item) => {
     const itemId = item.id;
-    console.log(itemId);
+
     if (selectedItems.includes(itemId)) {
       dispatch(removeItem(itemId));
       setSelectedItems(selectedItems.filter((id) => id !== itemId));

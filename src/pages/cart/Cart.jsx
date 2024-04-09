@@ -132,7 +132,7 @@ function Cart() {
 
     var pay = new window.Razorpay(options);
     pay.open();
-    // console.log(pay);
+  
   };
 
   return (
@@ -244,7 +244,7 @@ function Cart() {
                 backgroundColor: mode === "dark" ? "rgb(32 33 34)" : "",
                 color: mode === "dark" ? "white" : "",
                 position: "sticky",
-                top: 20, // Adjust the top value as needed
+                top: 20, 
               }}
             >
               <h1 className="font-bold text-center text-xl p-2">

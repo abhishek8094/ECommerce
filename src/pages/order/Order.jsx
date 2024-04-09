@@ -4,7 +4,9 @@ import Layout from "../../components/layout/Layout";
 import Loader from "../../components/loader/Loader";
 
 function Order() {
-  const userid = JSON.parse(localStorage.getItem("user")).user.uid;
+  const userString = localStorage.getItem("user");
+  const userid = userString ? JSON.parse(userString).user.uid : null;
+
   const context = useContext(myContext);
   const { mode, loading, order } = context;
 

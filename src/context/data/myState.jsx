@@ -146,8 +146,8 @@ function myState(props) {
         ordersArray.push(doc.data());
         setLoading(false);
       });
+      
       setOrder(ordersArray);
-
       setLoading(false);
     } catch (error) {
       setLoading(false);
