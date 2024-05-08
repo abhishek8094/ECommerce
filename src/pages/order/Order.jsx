@@ -10,6 +10,8 @@ function Order() {
   const context = useContext(myContext);
   const { mode, loading, order } = context;
 
+  console.log(order);
+
   return (
     <Layout>
       {loading && <Loader />}
