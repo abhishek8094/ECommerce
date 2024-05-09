@@ -32,7 +32,7 @@ const Carousel = ({ movingimg, interval = 5000 }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <button
         className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
         onClick={prevSlide}
@@ -42,7 +42,7 @@ const Carousel = ({ movingimg, interval = 5000 }) => {
       <img
         src={movingimg[activeIndex]}
         alt={`Slide ${activeIndex}`}
-        className="w-full h-[380px] object-center"
+        className="w-full h-auto lg:h-[380px] object-center"
       />
       <button
         className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
