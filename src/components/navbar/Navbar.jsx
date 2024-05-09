@@ -231,7 +231,7 @@ function Navbar() {
                 <Link to={"/"} className="flex">
                   <div className="flex ">
                     <h1
-                      className=" text-2xl font-bold text-black  px-2 py-1 rounded"
+                      className="text-2xl font-bold text-black px-2 py-1 rounded transition duration-300 ease-in-out hover:border-2 border-[#42b7ff]"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Capital Shop
@@ -244,7 +244,7 @@ function Navbar() {
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
                     to={"/allproducts"}
-                    className="text-sm font-medium text-gray-700 "
+                    className="ml-4 font-medium p-1 text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]"
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     All Products
@@ -294,7 +294,7 @@ function Navbar() {
                 </div>
 
                 {/* language Selector  */}
-                <div className="hidden lg:ml-8 lg:flex">
+                <div className="hidden p-2 lg:ml-8 lg:flex transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]">
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
                       src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
@@ -311,7 +311,7 @@ function Navbar() {
                 </div>
 
                 {/* profile image  */}
-                <div className="hidden lg:ml-8 lg:flex">
+                <div className="hidden p-2 lg:ml-8 lg:flex transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]">
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
                       className="inline-block w-10 h-10 rounded-full"
@@ -324,7 +324,7 @@ function Navbar() {
                 {/* wishlist  */}
                 <Link
                   to={"/wishlist"}
-                  className="ml-4 font-medium text-gray-700 "
+                  className="ml-4 p-1 font-medium text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4dbbff]"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Wishlist
@@ -337,7 +337,7 @@ function Navbar() {
                 </span>
 
                 {/* Toogle Dark Mode  */}
-                <div className="flex lg:ml-8">
+                <div className="flex p-2 lg:ml-8 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff] ">
                   <button className="" onClick={toggleMode}>
                     {mode === "light" ? (
                       <FiSun className="" size={30} />
@@ -353,7 +353,7 @@ function Navbar() {
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link
                     to={"/cart"}
-                    className="group -m-2 flex items-center p-2"
+                    className="group -m-2 flex items-center p-2 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]"
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     <svg
