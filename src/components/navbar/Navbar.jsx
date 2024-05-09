@@ -244,7 +244,7 @@ function Navbar() {
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
                     to={"/allproducts"}
-                    className="ml-4 font-medium p-1 text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]"
+                    className="ml-4 font-medium p-2 text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]"
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     All Products
@@ -253,7 +253,7 @@ function Navbar() {
                   {user ? (
                     <Link
                       to={"/order"}
-                      className="text-sm font-medium text-gray-700 "
+                      className="text-sm p-2 font-medium text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Order
@@ -261,7 +261,7 @@ function Navbar() {
                   ) : (
                     <Link
                       to={"/signup"}
-                      className="text-sm font-medium text-gray-700 "
+                      className="text-sm font-medium p-2 text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff] "
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Signup
@@ -271,7 +271,7 @@ function Navbar() {
                   {user?.user?.email === "abhishek12@gmail.com" ? (
                     <Link
                       to={"/dashboard"}
-                      className="text-sm font-medium text-gray-700 "
+                      className="text-sm font-medium text-gray-700 transition duration-300 ease-in-out hover:border-2 border-[#4cbaff]"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Admin
