@@ -42,7 +42,7 @@ const Carousel = ({ movingimg, interval = 5000 }) => {
       <img
         src={movingimg[activeIndex]}
         alt={`Slide ${activeIndex}`}
-        className="w-full h-[250px] lg:h-[380px]"
+        className="w-full h-[350px] lg:h-[380px]"
       />
       <button
         className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
